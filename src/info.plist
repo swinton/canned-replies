@@ -155,7 +155,10 @@ jq '{items: [.items[] | {title: .name, subtitle: .path, arg: .sha}]}'
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>## Canned replies
+
+https://github.com/swinton/canned-replies
+	</string>
 	<key>uidata</key>
 	<dict>
 		<key>1A4528B4-490A-4244-9D28-861C56F9FEDE</key>
@@ -195,6 +198,6 @@ jq '{items: [.items[] | {title: .name, subtitle: .path, arg: .sha}]}'
 	<key>version</key>
 	<string>0.1.0</string>
 	<key>webaddress</key>
-	<string>https://github.com/swinton</string>
+	<string>https://github.com/swinton/canned-replies</string>
 </dict>
 </plist>
