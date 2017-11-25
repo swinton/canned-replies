@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+function main() {
+  cd $(dirname "$0")/..
+
+  # Brewfile
+  if [ -f "Brewfile" ] && [ "$(uname -s)" = "Darwin" ]; then
+    brew update
+
+    brew bundle check >/dev/null 2>&1 || {
+      brew bundle
+    }
+  fi
+
+  # PATH
+  MY_PATH=/usr/bin:$( dirname $( which jq ) )
+
+  # GITHUB_TOKEN
+  echo "Enter your GitHub personal access token, followed by [ENTER]:"
+  read GITHUB_TOKEN
+}
+
+
+main "$@"
