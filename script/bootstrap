@@ -27,7 +27,7 @@ function mk_alfredworkflow() {
 
   # Write zip file
   cd "${dest}"
-  zip -r canned-replies.alfredworkflow * >/dev/null &2>1
+  zip -r canned-replies.alfredworkflow * >/dev/null 2>&1
 
   echo "${dest}/canned-replies.alfredworkflow"
 }
