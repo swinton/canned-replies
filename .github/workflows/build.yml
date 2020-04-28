@@ -22,6 +22,11 @@ jobs:
         git describe --tags $(git rev-list --tags --max-count=1) || echo 'no tags'
         zip --junk-paths CannedReplies.alfredworkflow src/* images/*
         cat src/info.plist | sed -e 's/$VERSION/FOO/g' | zip CannedReplies.alfredworkflow -
+    - name: Vendor jq
+      run: |
+        curl https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-amd64 --location -o jq
+        chmod u+x ./jq
+        zip CannedReplies.alfredworkflow ./jq
     - name: Verify artifact
       run: |
         unzip -l CannedReplies.alfredworkflow
