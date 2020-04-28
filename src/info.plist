@@ -53,15 +53,13 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>PATH=$PATH:$MY_PATH
-
-sha="$@"
+				<string>sha="$@"
 
 curl \
   --get \
   --header "authorization: token $GITHUB_TOKEN" \
   --url "https://api.github.com/repos/$REPO_NAME/git/blobs/$sha" |  \
-jq --raw-output '.content' | \
+./jq --raw-output '.content' | \
 python2.7 -c "import sys, base64 as b64; print b64.b64decode(sys.stdin.read());"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -107,8 +105,6 @@ python2.7 -c "import sys, base64 as b64; print b64.b64decode(sys.stdin.read());"
 				<key>script</key>
 				<string>#!/bin/bash
 
-PATH=$PATH:$MY_PATH
-
 query="$@"
 
 curl \
@@ -116,7 +112,7 @@ curl \
   --data-urlencode "q=${query} repo:$REPO_NAME in:path extension:md path:$REPO_PATH" \
   --header "authorization: token $GITHUB_TOKEN" \
   --url 'https://api.github.com/search/code' | \
-jq '{items: [.items[] | {title: .name, subtitle: .path, arg: .sha}]}'
+./jq '{items: [.items[] | {title: .name, subtitle: .path, arg: .sha}]}'
 </string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -153,7 +149,7 @@ jq '{items: [.items[] | {title: .name, subtitle: .path, arg: .sha}]}'
 			<key>uid</key>
 			<string>1A4528B4-490A-4244-9D28-861C56F9FEDE</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -188,8 +184,6 @@ https://github.com/swinton/canned-replies
 	<key>variables</key>
 	<dict>
 		<key>GITHUB_TOKEN</key>
-		<string></string>
-		<key>MY_PATH</key>
 		<string></string>
 		<key>REPO_NAME</key>
 		<string>swinton/canned-replies</string>
