@@ -60,7 +60,7 @@ sha="$@"
 curl \
   --get \
   --header "authorization: token $GITHUB_TOKEN" \
-  --url "https://api.github.com/repos/swinton/canned-replies/git/blobs/$sha" |  \
+  --url "https://api.github.com/repos/$REPO_NAME/git/blobs/$sha" |  \
 jq --raw-output '.content' | \
 python2.7 -c "import sys, base64 as b64; print b64.b64decode(sys.stdin.read());"</string>
 				<key>scriptargtype</key>
@@ -84,6 +84,8 @@ python2.7 -c "import sys, base64 as b64; print b64.b64decode(sys.stdin.read());"
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -101,7 +103,7 @@ python2.7 -c "import sys, base64 as b64; print b64.b64decode(sys.stdin.read());"
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Loading</string>
+				<string>Loading...</string>
 				<key>script</key>
 				<string>#!/bin/bash
 
@@ -111,7 +113,7 @@ query="$@"
 
 curl \
   --get \
-  --data-urlencode "q=${query} repo:swinton/canned-replies in:path extension:md path:canned-replies" \
+  --data-urlencode "q=${query} repo:$REPO_NAME in:path extension:md path:$REPO_PATH" \
   --header "authorization: token $GITHUB_TOKEN" \
   --url 'https://api.github.com/search/code' | \
 jq '{items: [.items[] | {title: .name, subtitle: .path, arg: .sha}]}'
@@ -134,7 +136,7 @@ jq '{items: [.items[] | {title: .name, subtitle: .path, arg: .sha}]}'
 			<key>uid</key>
 			<string>EBC2F163-A2C9-4971-9B07-85376834DCBF</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -189,6 +191,10 @@ https://github.com/swinton/canned-replies
 		<string></string>
 		<key>MY_PATH</key>
 		<string></string>
+		<key>REPO_NAME</key>
+		<string>swinton/canned-replies</string>
+		<key>REPO_PATH</key>
+		<string>canned-replies</string>
 	</dict>
 	<key>variablesdontexport</key>
 	<array>
