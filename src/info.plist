@@ -193,7 +193,6 @@ https://github.com/swinton/canned-replies
 	<key>variablesdontexport</key>
 	<array>
 		<string>GITHUB_TOKEN</string>
-		<string>MY_PATH</string>
 	</array>
 	<key>version</key>
 	<string>$VERSION</string>
