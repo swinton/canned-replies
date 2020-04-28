@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.github.services.canned-replies</string>
+	<string>com.github.swinton.canned-replies</string>
 	<key>category</key>
 	<string>Productivity</string>
 	<key>connections</key>
@@ -196,7 +196,7 @@ https://github.com/swinton/canned-replies
 		<string>MY_PATH</string>
 	</array>
 	<key>version</key>
-	<string>0.1.0</string>
+	<string>$VERSION</string>
 	<key>webaddress</key>
 	<string>https://github.com/swinton/canned-replies</string>
 </dict>
