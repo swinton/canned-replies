@@ -21,7 +21,7 @@ jobs:
       run: |
         TAG=$( git describe --tags $(git rev-list --tags --max-count=1) || echo '0.0.0' )
         cat src/info.plist | sed -e "s/\$VERSION/$TAG/g" > info.plist
-        zip --junk-paths CannedReplies.alfredworkflow info.plist src/* images/*
+        zip --junk-paths CannedReplies.alfredworkflow info.plist images/*
     - name: Vendor jq
       run: |
         curl https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-amd64 --location -o jq
